@@ -34,17 +34,19 @@ public class RecursiveParser {
         
         return false;
     }
-
+    
+    
     private boolean parseTimeFirst() {
-        return parseTimeComplement() && parseOptionalComma() && parseSubjectVerbComplement();
+        return parseTimeComplement() && parseComma() && parseSubjectVerbComplement();
     }
 
     private boolean parseTimeMiddle() {
-        return parseSubject() && parseVerb() && parseTimeComplement() && parseComplement();
+        return (parseSubject()||parsePronoun()) && parseVerb() && parseTimeComplement() && parseComplement();
     }
 
     private boolean parseTimeLast() {
-        return parseSubjectVerbComplement() && parseTimeComplement();
+        return (parseSubject() || parsePronoun()) && parseVerb() && parseComplement() && 
+               (currentIndex == tokens.size() || parseTimeComplement());
     }
 
     private boolean parseSubjectVerbComplement() {
@@ -75,7 +77,7 @@ public class RecursiveParser {
         return false;
     }
     
-    private boolean parseOptionalComma() {
+    private boolean parseComma() {
         if (currentIndex < tokens.size() && tokens.get(currentIndex).equals(",")) {
             currentIndex++;
             return true;
@@ -115,7 +117,9 @@ public class RecursiveParser {
             "nous voyons la voiture",
             "elle prend une maison",
             "je fait le projet",
-            "hier il a mangé le fromage",
+            "le chat mange hier le fromage",
+            "je mange le fromage hier",
+            "je hier mange le fromage hier",
             "aujourd'hui, je fais le projet"
         );
 
