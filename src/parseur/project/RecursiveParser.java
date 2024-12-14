@@ -1,7 +1,7 @@
 package parseur.project;
 
 import java.util.*;
- 
+  
 public class RecursiveParser {
     private List<String> tokens;
     private int currentIndex = 0;
@@ -119,7 +119,7 @@ public class RecursiveParser {
             "je fait le projet",
             "le chat mange hier le fromage",
             "je mange le fromage hier",
-            "je hier mange le fromage hier",
+            "hier je mange le fromage",
             "aujourd'hui, je fais le projet"
         );
 
