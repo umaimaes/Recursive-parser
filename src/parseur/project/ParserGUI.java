@@ -132,14 +132,14 @@ public class ParserGUI extends JFrame {
         ));
         
         String[] examples = {
-            "je fais le projet",
-            "le chat mange le fromage",
-            "un enfant lit un livre",
-            "nous voyons la voiture",
-            "elle prend une maison",
-            "hier il a mangé le fromage",
-            "les oiseaux chantent doucement",
-            "mon ami parle français"
+            "je fais le projet.",
+            "le chat mange le fromage.",
+            "un enfant lit un livre.",
+            "nous voyons la voiture.",
+            "elle prend une maison.",
+            "hier il a mangé le fromage.",
+            "les oiseaux chantent doucement.",
+            "mon ami parle français."
         };
         
         for (String example : examples) {
@@ -261,19 +261,16 @@ public class ParserGUI extends JFrame {
         boolean isValid = parser.parse();
         
         StringBuilder result = new StringBuilder();
-        result.append("📝 Phrase analysée: ").append(sentence).append("\n\n");
-        result.append("📊 Résultat: ");
+        result.append("Phrase analysée: ").append(sentence).append("\n\n");
+        result.append("Résultat: ");
         
         if (isValid) {
-            result.append("✅ Valide\n");
+            result.append("Valide\n");
             showStatusMessage("Analyse complétée avec succès", SUCCESS_COLOR);
         } else {
-            result.append("❌ Invalide\n");
+            result.append("Invalide\n");
             showStatusMessage("La phrase est invalide", ERROR_COLOR);
         }
-        
-        result.append("\n🔍 Détails de l'analyse:\n");
-        // Add more parsing details here if available from your RecursiveParser
         
         resultArea.setText(result.toString());
     }
